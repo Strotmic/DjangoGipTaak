@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from fitit import views
+from django.conf.urls import url, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url(r'^$', views.index, name='index'),
+    url(r"^fitit/", include("fitit.urls")),
+    path("logout/", views.user_logout, name="logout"),
+    path("special/", views.special, name="special")
 ]

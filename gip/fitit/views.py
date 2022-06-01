@@ -41,7 +41,7 @@ def special(request):
 
 
 def index(request):
-    return render(request, "basicapp/index.html")
+    return render(request, "fitit/index.html")
 
 
 def register(request):
