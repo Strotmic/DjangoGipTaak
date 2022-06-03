@@ -1,19 +1,18 @@
 <!DOCTYPE html>
+<link rel="stylesheet" href="../css/extra.css" />
+{% extends "fitit/base.html" %} {%block body_block%}
+<body id="login">
+  <div class="jumbotron">
+    <h1>Please Login</h1>
+    <form action=" {% url 'fitit:user_login' %}" method="POST">
+      {% csrf_token %}
+      <label for="username">Username:</label>
+      <input type="text" name="username" placeholder="Enter Username" />
 
-{% extends "fitit/base.html" %} {%block body_block%} {% load staticfiles %}
-
-<div class="jumbotron">
-  <h1>Please Login</h1>
-  <form action=" {% url 'fitit:user_login' %}" method="POST">
-    {% csrf_token %}
-    <label for="username">Username:</label>
-    <input type="text" name="username" placeholder="Enter Username" />
-
-    <label for="password">Password:</label>
-    <input type="password" name="password" />
-    <input type="submit" value="Login" />
-  </form>
-
-  <p class="test">test</p>
-</div>
-{%endblock%}
+      <label for="password">Password:</label>
+      <input type="password" name="password" />
+      <input type="submit" value="Login" />
+    </form>
+  </div>
+  {%endblock%}
+</body>
