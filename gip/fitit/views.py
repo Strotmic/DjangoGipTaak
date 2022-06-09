@@ -44,10 +44,9 @@ def special(request):
 
 
 def index(request):
-
-
-
-    return render(request, "fitit/index.html")
+    list = Horloge.objects.order_by("prijs")
+    print(str(list )+ " ok")
+    return render(request, "fitit/index.html", {"list":list})
 
 def aflos(request):
     x = aflosService(3500,12,0.059)

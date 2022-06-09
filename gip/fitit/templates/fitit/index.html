@@ -10,7 +10,29 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}" />
 {% block body_block %}
 
+
+
 <div class="jumbotron">
   <h1 class="test">Djano Level 5</h1>
+  <table class="table">
+    <thead>
+      <th>model</th>
+      <th>materiaal</th>
+      <th>prijs</th>
+      <th>merk</th>
+    </thead>
+
+    {% for i in list %}
+    <tbody>
+      <td>{{i.model}}</td>
+      <td>{{i.materiaal}}</td>
+      <td>{{i.prijs}}</td>
+      <td>{{i.merk}}</td>
+    </tbody>
+    {% endfor %}
+  </table>
 </div>
+
+
+
 {% endblock %}
