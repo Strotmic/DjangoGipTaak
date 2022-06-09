@@ -12,11 +12,7 @@
       crossorigin="anonymous"
     />
     {% load staticfiles %}
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{% static '../../static/css.css' %}"
-    />
+    <link rel="stylesheet" type="text/css" href="{% static 'css.css' %}" />
   </head>
   <body>
     <nav class="navbar navbar-default navbar-static-top">
@@ -42,6 +38,9 @@
             >
           </li>
           {% endif %}
+          <li>
+            <a class="navbar-link" href=" {% url 'fitit:koop' %}">koop</a>
+          </li>
         </ul>
       </div>
     </nav>
