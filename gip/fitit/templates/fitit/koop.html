@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="../css/extra.css" />
+{% extends "fitit/base.html" %} {%block body_block%}
+<body id="login">
+  <div class="jumbotron">
+    <h1>Aflos</h1>
+    <form action="" method="POST" enctype="multipart/form-data">
+      {%csrf_token%}
+      <div class="form-group">
+        <label for="tijd">Tijd in maanden</label>
+        <input class="form-control" type="number" name="tijd" id="tijd" />
+      </div>
+
+      <input type="submit" name="koop" value="Toon Aflos" />
+    </form>
+  </div>
+  {%endblock%}
+</body>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% extends "fitit/base.html" %} {%block body_block%}
+<div class="jumbotron">
+  <table class="table">
+    <thead>
+      <th>nr</th>
+      <th>Termijn</th>
+      <th>Intrest</th>
+      <th>Kapitaal</th>
+      <th>Schuld</th>
+    </thead>
+
+    {% for i in y %}
+    <tbody>
+      <td>{{i.id}}</td>
+      <td>{{i.termijn}}</td>
+      <td>{{i.intrest}}</td>
+      <td>{{i.kapitaal}}</td>
+      <td>{{i.schuld}}</td>
+    </tbody>
+    {% endfor %}
+  </table>
+  <a class="navbar-link" href=" {% url 'index' %}">Terug naar Index</a>
+</div>
+
+{%endblock%}

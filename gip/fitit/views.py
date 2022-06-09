@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from fitit.forms import UserForm, UserProfileInfoForm
+from fitit.aflosService import aflosService
 
 # Create your views here.
 
@@ -43,6 +44,20 @@ def special(request):
 def index(request):
     return render(request, "fitit/index.html")
 
+def aflos(request):
+    x = aflosService(3500,12,0.059)
+    y = x.getTabel()
+    return render(request, "fitit/aflos.html", {"y":y})
+
+def koop(request):
+    if request.method == "POST":
+        tijd = request.POST['tijd']
+        x = aflosService(3500,int(tijd),0.059)
+        y = x.getTabel()
+        return render(request, "fitit/aflos.html", {"y":y})
+    else:
+        return render(request, "fitit/koop.html")
+    
 
 def register(request):
     registered = False
@@ -73,3 +88,5 @@ def register(request):
         profile_form = UserProfileInfoForm()
 
     return render(request, "fitit/registration.html", {"user_form": user_form, "profile_form": profile_form, "registered": registered})
+
+

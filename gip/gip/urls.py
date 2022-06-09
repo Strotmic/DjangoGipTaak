@@ -16,12 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from fitit import views
-from django.conf.urls import url, include
+from django.conf.urls import include
 
 urlpatterns = [
-    url(r"^$", views.index, name="index"),
+    path("", views.index, name="index"),
     path('admin/', admin.site.urls),
-    url(r"^fitit/", include("fitit.urls")),
+    path("fitit/", include("fitit.urls")),
     path("logout/", views.user_logout, name="logout"),
-    path("special/", views.special, name="special")
+    path("special/", views.special, name="special"),
 ]
