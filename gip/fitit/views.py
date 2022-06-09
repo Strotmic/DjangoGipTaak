@@ -57,9 +57,9 @@ def aflos(request):
 def koop(request):
     if request.method == "POST":
         tijd = request.POST['tijd']
-        if int(tijd)<=0:
+        if int(tijd)<=1:
             return render(request, "fitit/koop.html")
-        if int(tijd)>0 and int(tijd)<=6:
+        if int(tijd)>1 and int(tijd)<=6:
             rente = 0.10
         if int(tijd)>6 and int(tijd)<=12:
             rente = 0.085
@@ -104,4 +104,6 @@ def register(request):
 
     return render(request, "fitit/registration.html", {"user_form": user_form, "profile_form": profile_form, "registered": registered})
 
+def test(request):
+    return render(request, "fitit/index2.html")
 

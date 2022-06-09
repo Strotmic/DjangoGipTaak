@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% extends 'fitit/base.html' %}
 <link
   rel="stylesheet"
   href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -7,9 +8,9 @@
 />
 {% load static from staticfiles%}
 <link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}" />
-{% extends 'fitit/base.html' %} {% block body_block %}
+{% block body_block %}
 
 <div class="jumbotron">
-  <h1>Djano Level 5</h1>
+  <h1 class="test">Djano Level 5</h1>
 </div>
 {% endblock %}
