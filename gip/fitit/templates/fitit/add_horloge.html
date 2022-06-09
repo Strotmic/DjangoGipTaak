@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="../css/emodeltra.css" />
+{% extends "fitit/base.html" %} {%block body_block%}
+<body id="login">
+  <div class="jumbotron">
+    <h1>Voeg Toe</h1>
+    <form action="" method="POST" enctype="multipart/form-data">
+      {%csrf_token%}
+      {{x.as_p}}
+      <input type="submit" name="" value="Voeg toe" />
+    </form>
+  </div>
+  {%endblock%}
+</body>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% load static from staticfiles%}
+{% load static %}
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -39,6 +39,9 @@
           {% endif %}
           <li>
             <a class="navbar-link" href=" {% url 'fitit:koop' %}">koop</a>
+          </li>
+          <li>
+            <a class="navbar-link" href=" {% url 'fitit:add_horloge' %}">add</a>
           </li>
         </ul>
       </div>

@@ -10,5 +10,6 @@ urlpatterns = [
     path("user_login", views.user_login, name="user_login"),
     path("koop", views.koop, name="koop"),
     path("test", views.test, name="test"),
-    path("aflos", views.aflos, name="aflos")
+    path("aflos", views.aflos, name="aflos"),
+    path("add_horloge", views.add, name="add_horloge"),
 ]
