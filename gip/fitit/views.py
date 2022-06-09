@@ -121,5 +121,5 @@ def add(request):
         return render(request, "fitit/add_horloge.html", {"x":x})
 
 
-def list(request):
-    Horloge.
+#def list(request):
+    
