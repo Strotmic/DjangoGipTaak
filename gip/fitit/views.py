@@ -5,6 +5,8 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from fitit.forms import UserForm, UserProfileInfoForm
 from fitit.aflosService import aflosService
+from fitit.models import Horloge
+from django.core.exceptions import SuspiciousOperation
 
 # Create your views here.
 
@@ -42,6 +44,9 @@ def special(request):
 
 
 def index(request):
+
+
+
     return render(request, "fitit/index.html")
 
 def aflos(request):
@@ -52,7 +57,17 @@ def aflos(request):
 def koop(request):
     if request.method == "POST":
         tijd = request.POST['tijd']
-        x = aflosService(3500,int(tijd),0.059)
+        if int(tijd)<=0:
+            return render(request, "fitit/koop.html")
+        if int(tijd)>0 and int(tijd)<=6:
+            rente = 0.10
+        if int(tijd)>6 and int(tijd)<=12:
+            rente = 0.085
+        if int(tijd)>12 and int(tijd)<=24:
+            rente = 0.065
+        if int(tijd)>24:
+            rente = 0.06
+        x = aflosService(3500,int(tijd),rente)
         y = x.getTabel()
         return render(request, "fitit/aflos.html", {"y":y})
     else:
