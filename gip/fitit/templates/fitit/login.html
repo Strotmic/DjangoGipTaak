@@ -6,65 +6,35 @@
   integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
   crossorigin="anonymous"
 />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
 <link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}" />
 <body>
-  <section class="text-center text-lg-start">
-    <div class="container py-4">
-      <div class="row g-0 align-items-center">
-        <div class="col-lg-6 mb-5 mb-lg-0">
-          <div
-            class="card cascading-right"
-            style="
-              background: hsla(0, 0%, 100%, 0.55);
-              backdrop-filter: blur(30px);
-            "
-          >
-            <div class="card-body p-5 shadow-5 text-center">
-              <h2 class="fw-bold mb-5">Login now</h2>
-              <form action=" {% url 'fitit:user_login' %}" method="POST">
-                {% csrf_token %}
-                <div class="row">
-                  <div class="col-md-12 mb-4">
-                    <div class="form-outline">
-                      <input type="text" id="form1" class="form-control" />
-                      <label class="form-label" for="form1">First name</label>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="form-outline mb-4">
-                  <input type="password" id="form3" class="form-control" />
-                  <label class="form-label" for="form3">Password</label>
-                </div>
-
-                <button type="submit" class="btn btn-primary btn-block mb-4">
-                  Login
-                </button>
-
-                <div class="text-center">
-                  <p>or</p>
-                  <button type="submit" class="btn btn-danger btn-block mb-4">
-                    <a
-                      class="text-reset text-decoration-none"
-                      href=" {% url 'fitit:register' %}"
-                      >Sign up</a
-                    >
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6 mb-5 mb-lg-0">
-          <img
-            src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg"
-            class="w-100 rounded-4 shadow-4"
-            alt=""
-          />
-        </div>
-      </div>
+  <div class="wrapper">
+    <div class="logo">
+        <img src=" " alt="">
     </div>
+    <div class="text-center mt-4 name">
+        FIT IT
+    </div>
+    <form class="p-3 mt-3" action=" {% url 'fitit:user_login' %}" method="POST">
+      {% csrf_token %}
+        <div class="form-field d-flex align-items-center">
+            <span class="far fa-user"></span>
+            <input type="text" name="userName" id="userName" placeholder="Username">
+        </div>
+        <div class="form-field d-flex align-items-center">
+            <span class="fas fa-key"></span>
+            <input type="password" name="password" id="pwd" placeholder="Password">
+        </div>
+        <button class="btn mt-3">Login</button>
+    </form>
+    <div class="text-center fs-6">
+        <a href="#">Forget password?</a> or <a href="#">Sign up</a>
+    </div>
+  </div>
   </section>
   {%endblock%}
 </body>
