@@ -9,4 +9,17 @@ class UserProfileInfo(models.Model):
 
     def __str__(self):
         return self.user.username
+
+class Horloge(models.Model):
+    model = models.CharField(max_length=256)
+    horloge_pic = models.ImageField(upload_to='car_pics', blank=True)
+    materiaal = models.CharField(max_length=256)
+    prijs = models.FloatField()
+    merk = models.CharField(max_length=256)
+
+    def __str__(self):
+        return self.merk
+
+
+
 # Create your models here.
