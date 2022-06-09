@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from fitit.forms import UserForm, UserProfileInfoForm
+from fitit.forms import UserForm, UserProfileInfoForm, HorlogeForm
 from fitit.aflosService import aflosService
 from fitit.models import Horloge
 from django.core.exceptions import SuspiciousOperation
@@ -107,3 +107,19 @@ def register(request):
 def test(request):
     return render(request, "fitit/index2.html")
 
+def add(request):
+    if request.method == "POST":
+        x = HorlogeForm(data=request.POST)
+
+        if x.is_valid():
+            horloge = x.save()
+            horloge.save()
+
+        return render(request, "fitit/index.html")
+    else: 
+        x = HorlogeForm()
+        return render(request, "fitit/add_horloge.html", {"x":x})
+
+
+def list(request):
+    Horloge.
