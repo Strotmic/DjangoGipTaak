@@ -22,7 +22,7 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect(reverse("index"))
+                return HttpResponseRedirect(reverse("fitit:test"))
             else:
                 return HttpResponse("Account is not active")
         else:
@@ -36,7 +36,7 @@ def user_login(request):
 @login_required
 def user_logout(request):
     logout(request)
-    return HttpResponseRedirect(reverse("index"))
+    return HttpResponseRedirect(reverse("fitit:test"))
 
 
 @login_required
@@ -119,7 +119,7 @@ def add(request):
 
         horloge.save()
         registered = True
-        return render(request, "fitit/index.html")
+        return render(request, "fitit/index2.html")
     else: 
         x = HorlogeForm()
         return render(request, "fitit/add_horloge.html", {"x":x})

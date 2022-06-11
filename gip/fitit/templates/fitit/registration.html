@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-{% extends 'fitit/base.html'%} 
+{% extends 'fitit/base2.html'%} 
 {% load static %} {% block body_block %}
 
 <div class="jumbotron">
-  {% if registered %}
+  <div class="container">
+    <br>
+    <br>
+    {% if registered %}
   <h1>Thank you for registering</h1>
   {%else%}
   <h1>register here</h1>
@@ -14,6 +17,8 @@
     <input type="submit" name="" value="Register" />
   </form>
   {% endif %}
+  </div>
+  
 </div>
 
 {% endblock %}
