@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from fitit import views
 from django.conf.urls import include
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path("", views.index, name="index"),
@@ -24,4 +26,4 @@ urlpatterns = [
     path("fitit/", include("fitit.urls")),
     path("logout/", views.user_logout, name="logout"),
     path("special/", views.special, name="special"),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

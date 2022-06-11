@@ -1,3 +1,4 @@
+from xml.dom.domreg import registered
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
@@ -101,6 +102,7 @@ def register(request):
         user_form = UserForm()
         profile_form = UserProfileInfoForm()
 
+
     return render(request, "fitit/registration.html", {"user_form": user_form, "profile_form": profile_form, "registered": registered})
 
 def test(request):
@@ -111,9 +113,12 @@ def add(request):
         x = HorlogeForm(data=request.POST)
 
         if x.is_valid():
-            horloge = x.save()
-            horloge.save()
+            horloge = x.save(commit=False)
+        if "horloge_pic" in request.FILES:
+            horloge.horloge_pic = request.FILES["horloge_pic"]
 
+        horloge.save()
+        registered = True
         return render(request, "fitit/index.html")
     else: 
         x = HorlogeForm()

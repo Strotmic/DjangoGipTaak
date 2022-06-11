@@ -1,25 +1,18 @@
 <!DOCTYPE html>
 {% extends 'fitit/base.html' %}
-<link
-  rel="stylesheet"
-  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-  crossorigin="anonymous"
-/>
-{% load static%}
-<link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}" />
 {% block body_block %}
 
 
 
 <div class="jumbotron">
-  <h1 class="test">Djano Level 5</h1>
+  <h1 class="test">Fit it</h1>
   <table class="table">
     <thead>
       <th>model</th>
       <th>materiaal</th>
       <th>prijs</th>
       <th>merk</th>
+      <th>foto</th>
     </thead>
 
     {% for i in list %}
@@ -28,6 +21,7 @@
       <td>{{i.materiaal}}</td>
       <td>{{i.prijs}}</td>
       <td>{{i.merk}}</td>
+      <td><img src="{{i.horloge_pic.url}}" alt="" href="">{{i.horloge_pic.url}}</td>
     </tbody>
     {% endfor %}
   </table>
