@@ -15,7 +15,9 @@ urlpatterns = [
     path("test", views.test, name="test"),
     path("aflos", views.aflos, name="aflos"),
     path("add_horloge", views.add, name="add_horloge"),
+    path("horloges", views.horloges, name="horloges"),
 ]
+
 
 
 

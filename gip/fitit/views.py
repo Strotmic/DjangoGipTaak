@@ -6,11 +6,14 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from fitit.forms import UserForm, UserProfileInfoForm, HorlogeForm
 from fitit.aflosService import aflosService
+from django.urls import reverse_lazy
 from fitit.models import Horloge
 from django.core.exceptions import SuspiciousOperation
+from django.views.generic import View, TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 
 # Create your views here.
-
+def horloges(request):
+    return render(request, "fitit/horloges.html")
 
 def user_login(request):
     if request.method == "POST":
@@ -125,5 +128,13 @@ def add(request):
         return render(request, "fitit/add_horloge.html", {"x":x})
 
 
-#def list(request):
+#def list(request)
+
+class HorlogeUpdateView(UpdateView):
+    fields = ("model","merk","materiaal","prijs","horloge_pic")
+    model = Horloge
+
+class HorlogeUpdateView(DeleteView):
+    model = Horloge
+    success_url = reverse_lazy("fitit:test")
     
