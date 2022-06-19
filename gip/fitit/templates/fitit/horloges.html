@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% extends 'fitit/base2.html' %}
+
+{% block body_block %}
+{%load static%}
+
+<section class="wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center mb-5">
+            <h1 class="display-4">Onze horloge assortiment</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-4 mb-4"><div class="card text-white card-has-bg click-col" style="background-image:url('https://source.unsplash.com/600x900/?tech,street');">
+            <img class="card-img d-none" src="{% static 'images/istockphoto-458689475-612x612.png' %}" alt="Goverment Lorem Ipsum Sit Amet Consectetur dipisi?">
+                <div class="card-img-overlay d-flex flex-column">
+                    <div class="card-body">
+                    <h4 class="card-title mt-0 "><a class="text-white" herf="#">Uw horloge naam</a></h4>
+                    <small><i class="fa-solid fa-money-bill-1-wave"></i>Prijs van de horloge</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+{% endblock %}
