@@ -7,12 +7,12 @@ from django.contrib.auth.decorators import login_required
 from fitit.forms import UserForm, UserProfileInfoForm, HorlogeForm
 from fitit.aflosService import aflosService
 from django.urls import reverse_lazy
-from fitit.models import Horloge
+from fitit.models import Horloge, User, UserProfileInfo
 from django.core.exceptions import SuspiciousOperation
 from django.views.generic import View, TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 
 # Create your views here.
-def horloges(request):
+def horloges(request, **kwargs):
     list = Horloge.objects.order_by("prijs")
     print(str(list )+ " ok")
     return render(request, "fitit/horloges.html", {"list":list})
@@ -148,4 +148,30 @@ class HorlogeUpdateView(UpdateView):
 class HorlogeDelteView(DeleteView):
     model = Horloge
     success_url = reverse_lazy("fitit:horloges")
+
+class UpdateUser(UpdateView):
+    fields = ("username", "email")
+    model = User
     
+    def get_success_url(self):
+        return reverse("fitit:test")
+
+class updatePhoto(UpdateView):
+    model = UserProfileInfo
+    fields = ("profile_pic",)
+
+def Password(request, **kwargs):
+    print(kwargs["pk"])
+    u = User.objects.get(id=kwargs["pk"])
+    print(u)
+    if request.method == "POST":
+        tijd = request.POST['password']
+        tijd2 = request.POST['password2']
+        if tijd == tijd2:
+            u.set_password(tijd)
+            u.save()
+        else:
+            return render(request, "fitit/changePassword.html", {"y":"Wachtwoord was niet hetzelfde"})
+        return render(request, "fitit/index2.html")
+    else:
+        return render(request, "fitit/changePassword.html")

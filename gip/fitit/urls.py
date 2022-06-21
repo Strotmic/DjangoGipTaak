@@ -18,6 +18,9 @@ urlpatterns = [
     path("horloges", views.horloges, name="horloges"),
     path("delete/<int:pk>/", views.HorlogeDelteView.as_view(), name="delete"),
     path("update/<int:pk>/", views.HorlogeUpdateView.as_view(), name="update"),
+    path("updateUser/<int:pk>/", views.UpdateUser.as_view(), name="updateUser"),
+    path("updatePhoto/<int:pk>/", views.updatePhoto.as_view(), name="updatePhoto"),
+    path("updatePassword/<int:pk>/", views.Password, name="updatePassword"),
 ]
 
 
