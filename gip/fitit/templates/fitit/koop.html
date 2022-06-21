@@ -1,7 +1,13 @@
 <!DOCTYPE html>
-{% extends "fitit/base.html" %} {%block body_block%}
+{% extends "fitit/base2.html" %} {%block body_block%}
 <body id="login">
-  <div class="jumbotron">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br><br>
+  <div class="container">
     <h1>Aflos</h1>
     <form action="" method="POST" enctype="multipart/form-data">
       {%csrf_token%}
@@ -13,5 +19,6 @@
       <input type="submit" name="koop" value="Toon Aflos" />
     </form>
   </div>
+  <br><br>
   {%endblock%}
 </body>

@@ -1,6 +1,10 @@
 <!DOCTYPE html>
-{% extends "fitit/base.html" %} {%block body_block%}
-<div class="jumbotron">
+{% extends "fitit/base2.html" %} {%block body_block%}
+<div class="container">
+  <br>
+  <br>
+  <br>
+  <br><br><br>
   <table class="table">
     <thead>
       <th>nr</th>
@@ -20,7 +24,7 @@
     </tbody>
     {% endfor %}
   </table>
-  <a class="navbar-link" href=" {% url 'index' %}">Terug naar Index</a>
+  <a class="navbar-link" href=" {% url 'fitit:horloges' %}">Terug naar Index</a>
 </div>
 
 {%endblock%}

@@ -13,7 +13,9 @@ from django.views.generic import View, TemplateView, ListView, DetailView, Creat
 
 # Create your views here.
 def horloges(request):
-    return render(request, "fitit/horloges.html")
+    list = Horloge.objects.order_by("prijs")
+    print(str(list )+ " ok")
+    return render(request, "fitit/horloges.html", {"list":list})
 
 def user_login(request):
     if request.method == "POST":
@@ -48,7 +50,7 @@ def special(request):
 
 
 def index(request):
-    list = Horloge.objects.order_by("prijs")
+    list = Horloge.objects.get()
     print(str(list )+ " ok")
     return render(request, "fitit/index.html", {"list":list})
 
@@ -57,7 +59,11 @@ def aflos(request):
     y = x.getTabel()
     return render(request, "fitit/aflos.html", {"y":y})
 
-def koop(request):
+def koop(request, **kwargs):
+    print(kwargs)
+    list = Horloge.objects.order_by("prijs")
+    for i in Horloge.objects.all():
+        print(i)
     if request.method == "POST":
         tijd = request.POST['tijd']
         if int(tijd)<=1:
@@ -134,7 +140,7 @@ class HorlogeUpdateView(UpdateView):
     fields = ("model","merk","materiaal","prijs","horloge_pic")
     model = Horloge
 
-class HorlogeUpdateView(DeleteView):
+class HorlogeDelteView(DeleteView):
     model = Horloge
-    success_url = reverse_lazy("fitit:test")
+    success_url = reverse_lazy("fitit:horloges")
     

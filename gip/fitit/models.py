@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 
 
@@ -9,6 +10,9 @@ class Horloge(models.Model):
     materiaal = models.CharField(max_length=256)
     prijs = models.FloatField()
     merk = models.CharField(max_length=256)
+
+    def get_absolute_url(self):
+        return reverse("fitit:horloges", kwargs={"pk": self.pk})
 
     def __str__(self):
         return self.merk
