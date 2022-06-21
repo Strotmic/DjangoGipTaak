@@ -21,7 +21,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path("", views.index, name="index"),
+    path("", views.test, name="index"),
     path('admin/', admin.site.urls),
     path("fitit/", include("fitit.urls")),
     path("logout/", views.user_logout, name="logout"),
