@@ -12,7 +12,7 @@ class Horloge(models.Model):
     merk = models.CharField(max_length=256)
 
     def get_absolute_url(self):
-        return reverse("fitit:horloges", kwargs={"pk": self.pk})
+        return reverse("fitit:horloges")
 
     def __str__(self):
         return self.merk
@@ -24,8 +24,12 @@ class UserProfileInfo(models.Model):
 
     profile_pic = models.ImageField(upload_to='profile_pics', blank=True)
 
+    def get_absolute_url(self):
+        return reverse("fitit:test")
+
     def __str__(self):
         return self.user.username
+
 
 
 # Create your models here.
