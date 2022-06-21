@@ -27,6 +27,7 @@
               <p class="card-text">Merk: {{i.merk}}</p>
               <a class="btn-danger p-1" href=" {% url 'fitit:koop' pk=i.id %}">koop</a>
               <a class="btn-danger p-1" href=" {% url 'fitit:delete' pk=i.id%}">delete</a>
+              <a class="btn-danger p-1" href=" {% url 'fitit:update' pk=i.id %}">update</a>
             </div>
           </div>
         {% endfor %}

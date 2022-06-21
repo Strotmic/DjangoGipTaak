@@ -60,10 +60,15 @@ def aflos(request):
     return render(request, "fitit/aflos.html", {"y":y})
 
 def koop(request, **kwargs):
-    print(kwargs)
-    list = Horloge.objects.order_by("prijs")
-    for i in Horloge.objects.all():
-        print(i)
+    list = Horloge.objects.values_list("id", "prijs")
+    print(list[0][0])
+    prijs = 0
+    temp=0
+    for i in Horloge.objects.values_list("id"):
+        if kwargs["pk"] == list[temp][0]:
+            prijs = list[temp][1]
+        temp+=1
+    print(prijs)
     if request.method == "POST":
         tijd = request.POST['tijd']
         if int(tijd)<=1:
@@ -76,7 +81,7 @@ def koop(request, **kwargs):
             rente = 0.065
         if int(tijd)>24:
             rente = 0.06
-        x = aflosService(3500,int(tijd),rente)
+        x = aflosService(prijs,int(tijd),rente)
         y = x.getTabel()
         return render(request, "fitit/aflos.html", {"y":y})
     else:

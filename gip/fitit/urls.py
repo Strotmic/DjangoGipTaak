@@ -17,6 +17,7 @@ urlpatterns = [
     path("add_horloge", views.add, name="add_horloge"),
     path("horloges", views.horloges, name="horloges"),
     path("delete/<int:pk>/", views.HorlogeDelteView.as_view(), name="delete"),
+    path("update/<int:pk>/", views.HorlogeUpdateView.as_view(), name="update"),
 ]
 
 
