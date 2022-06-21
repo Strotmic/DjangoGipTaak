@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% extends 'fitit/base2.html' %}
+
+{% block body_block %}
+{% load static %}
+
+<section class="wrapper1">
+    <div class="container">
+      <br>
+      <br><br>
+        <div class="row">
+            <div class="col text-center mb-5">
+            <h1 class="display-4">Uw account</h1>
+            </div>
+        </div>
+        <div class="container jumbotron">
+            <h1>Profile info:</h1>
+            <h2>Name: {{user.username}}</h2>
+            <h2>Email: {{user.email}}</h2>
+            {% if user.userprofileinfo.profile_pic %}
+            <h2>Profile picture:</h2>
+            <img src="{{user.userprofileinfo.profile_pic.url}}" style="width: 20vw;" alt="">
+            {% endif %}
+            
+        </div>
+        <a class="btn btn-secondary" href="{% url 'fitit:updateUser' pk=user.id %}">Update Account</a>
+        <a class="btn btn-secondary" href=" {% url 'fitit:updatePassword' pk=user.id %} ">Update Password</a>
+        <a class="btn btn-secondary" href=" {% url 'fitit:updatePhoto' pk=user.id %} ">Update Photo</a>
+        <br>
+   
+</div>
+</section>
+{% endblock %}

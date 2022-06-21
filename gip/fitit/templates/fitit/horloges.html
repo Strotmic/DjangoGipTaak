@@ -26,8 +26,7 @@
               <p class="card-text">Prijs: {{i.prijs}}</p>
               <p class="card-text">Merk: {{i.merk}}</p>
               <a class="btn btn-secondary p-1" href=" {% url 'fitit:koop' pk=i.id %}">koop</a>
-              {% if user.is_authenticated %}
-              
+              {% if user.is_superuser %}
               <a class="btn btn-secondary p-1" href=" {% url 'fitit:delete' pk=i.id%}">delete</a>
               <a class="btn btn-secondary p-1" href=" {% url 'fitit:update' pk=i.id %}">update</a>
               {% endif %}

@@ -10,13 +10,16 @@
     <br>
     {% if registered %}
   <h1>Thank you for registering</h1>
+  <a class="btn btn-secondary" href="{% url 'fitit:user_login' %}">login</a>
+  <a class="btn btn-secondary" href="{% url 'fitit:test' %}">Home</a>
   {%else%}
   <h1>register here</h1>
   <h3>Just fill out the form</h3>
 
   <form action="" method="POST" enctype="multipart/form-data">
     {%csrf_token%} {{user_form.as_p}} {{profile_form.as_p}}
-    <input type="submit" name="" value="Register" />
+    <input class="btn btn-secondary" type="submit" name="" value="Register" />
+    <a class="btn btn-secondary" href="{% url 'fitit:test' %}">Annuleer</a>
   </form>
   {% endif %}
   </div>

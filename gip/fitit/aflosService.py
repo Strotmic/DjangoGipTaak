@@ -1,19 +1,3 @@
-class Simulatie():
-    def __init__(self, rente,tijd, prijs):
-        self.rente = rente
-        self.prijs = prijs
-        self.tijd = tijd
-
-    def getPrijs(self):
-        return self.prijs
-    
-    def getRente(self):
-        return self.rente
-
-    def getTijd(self):
-        return self.tijd
-
-
 class Aflos():
     def __init__(self, id,termijn,kapitaal, intrest, schuld):
         self.id = id
@@ -59,9 +43,6 @@ class aflosService:
     def maandrente(self):
         maandrente = ((1+self.rente)**0.08333333333333333)-1
         return maandrente
-
-    
-
 
     def termijn(self):
         termijn = ((self.prijs*self.maandrente())/(1-((1+self.maandrente())**-self.tijd)))

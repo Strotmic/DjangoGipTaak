@@ -3,6 +3,8 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
+from django.db import models
+
 from django.contrib.auth.decorators import login_required
 from fitit.forms import UserForm, UserProfileInfoForm, HorlogeForm
 from fitit.aflosService import aflosService
@@ -14,14 +16,12 @@ from django.views.generic import View, TemplateView, ListView, DetailView, Creat
 # Create your views here.
 def horloges(request, **kwargs):
     list = Horloge.objects.order_by("prijs")
-    print(str(list )+ " ok")
     return render(request, "fitit/horloges.html", {"list":list})
 
 def user_login(request):
     if request.method == "POST":
         username = request.POST.get("username")
         password = request.POST.get("password")
-        print(f"{username} and {password}")
         user = authenticate(username=username, password=password)
 
         if user:
@@ -51,7 +51,6 @@ def special(request):
 
 def index(request):
     list = Horloge.objects.get()
-    print(str(list )+ " ok")
     return render(request, "fitit/index.html", {"list":list})
 
 def aflos(request):
@@ -61,14 +60,12 @@ def aflos(request):
 
 def koop(request, **kwargs):
     list = Horloge.objects.values_list("id", "prijs")
-    print(list[0][0])
     prijs = 0
     temp=0
     for i in Horloge.objects.values_list("id"):
         if kwargs["pk"] == list[temp][0]:
             prijs = list[temp][1]
         temp+=1
-    print(prijs)
     if request.method == "POST":
         tijd = request.POST['tijd']
         if int(tijd)<=1:
@@ -99,7 +96,6 @@ def register(request):
             user = user_form.save()
             user.set_password(user.password)
             user.save()
-
             profile = profile_form.save(commit=False)
             profile.user = user
 
@@ -156,14 +152,38 @@ class UpdateUser(UpdateView):
     def get_success_url(self):
         return reverse("fitit:test")
 
-class updatePhoto(UpdateView):
-    model = UserProfileInfo
-    fields = ("profile_pic",)
+def updatePhoto(request, **kwargs):
+    u = User.objects.values_list("id", "userprofileinfo")
+    print(u)
+    print(kwargs)
+    for i in User.objects.values_list("id", "userprofileinfo"):
+        
+        if i[0]==kwargs["pk"]:
+            print(u[8])
+
+            
+    if request.method =="POST":
+        profile_form =  UserProfileInfoForm(data=request.POST)
+        if profile_form.is_valid():
+            profile = profile_form
+            print(profile)
+            '''profile.user = u[8]
+            if "profile_pic" in request.FILES:
+                profile.profile_pic = request.FILES["profile_pic"]
+            profile.save()
+            registered=True'''
+        else:
+            print(profile_form.errors)
+       
+
+        return render(request,"fitit/userprofile.html")
+    else:
+        profile_form = UserProfileInfoForm()
+        return render(request,"fitit/changephoto.html",{"profile_form": profile_form})
 
 def Password(request, **kwargs):
     print(kwargs["pk"])
     u = User.objects.get(id=kwargs["pk"])
-    print(u)
     if request.method == "POST":
         tijd = request.POST['password']
         tijd2 = request.POST['password2']
@@ -175,3 +195,7 @@ def Password(request, **kwargs):
         return render(request, "fitit/index2.html")
     else:
         return render(request, "fitit/changePassword.html")
+
+class UserDetails(DetailView):
+    model = User
+    template_name = "fitit/userprofile.html"
