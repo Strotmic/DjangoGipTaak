@@ -9,11 +9,12 @@
     <br>
     <br>
     <br>
-    <h1>Voeg Toe</h1>
+    <h1>Update</h1>
     <form action="" method="POST" enctype="multipart/form-data">
       {%csrf_token%}
       {{form.as_p}}
       <input class="btn btn-secondary" type="submit" name="" value="Update" />
+      <a class="btn btn-secondary" href="{% url 'fitit:test' %}">Annuleer</a>
     </form>
   </div>
   {%endblock%}

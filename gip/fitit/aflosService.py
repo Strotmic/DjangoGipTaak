@@ -52,9 +52,3 @@ class aflosService:
         print(self.rente)
 
 #y = Simulatie(3000,0.05,1)
-"""x= aflosService(3500,12,0.059)
-x.test()
-print(x.maandrente())
-y = x.getTabel()
-for i in range(len(y)):
-    print(f"{y[i].getId()} {y[i].getTermijn()} + {y[i].getKapitaal()} + {y[i].getSchuld()} + {y[i].getIntrest()}")"""

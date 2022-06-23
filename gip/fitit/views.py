@@ -68,7 +68,7 @@ def koop(request, **kwargs):
         temp+=1
     if request.method == "POST":
         tijd = request.POST['tijd']
-        if int(tijd)<=1:
+        if int(tijd)<=0:
             return render(request, "fitit/koop.html")
         if int(tijd)>1 and int(tijd)<=6:
             rente = 0.10
@@ -152,34 +152,6 @@ class UpdateUser(UpdateView):
     def get_success_url(self):
         return reverse("fitit:test")
 
-def updatePhoto(request, **kwargs):
-    u = User.objects.values_list("id", "userprofileinfo")
-    print(u)
-    print(kwargs)
-    for i in User.objects.values_list("id", "userprofileinfo"):
-        
-        if i[0]==kwargs["pk"]:
-            print(u[8])
-
-            
-    if request.method =="POST":
-        profile_form =  UserProfileInfoForm(data=request.POST)
-        if profile_form.is_valid():
-            profile = profile_form
-            print(profile)
-            '''profile.user = u[8]
-            if "profile_pic" in request.FILES:
-                profile.profile_pic = request.FILES["profile_pic"]
-            profile.save()
-            registered=True'''
-        else:
-            print(profile_form.errors)
-       
-
-        return render(request,"fitit/userprofile.html")
-    else:
-        profile_form = UserProfileInfoForm()
-        return render(request,"fitit/changephoto.html",{"profile_form": profile_form})
 
 def Password(request, **kwargs):
     print(kwargs["pk"])
