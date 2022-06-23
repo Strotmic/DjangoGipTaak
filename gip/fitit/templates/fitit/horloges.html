@@ -1,39 +1,53 @@
 <!DOCTYPE html>
-{% extends 'fitit/base2.html' %}
-
-{% block body_block %}
-{% load static %}
+{% extends 'fitit/base2.html' %} {% block body_block %} {% load static %}
 
 <section class="wrapper1">
-    <div class="container">
-      <br>
-      <br><br>
-        <div class="row">
-            <div class="col text-center mb-5">
-            <h1 class="display-4">Ons horloge assortiment</h1>
-            </div>
-        </div>
-        <br>
-        <br>
-        <div class="row">
-            {% for i in list %}
-       
-        <div class="card col-md-5 m-2">
-            <img src="{{i.horloge_pic.url}}" class="card-img-top" style="height: auto; width: 20vw;" alt="...">
-            <div class="card-body">
-              <p class="card-text">Model: {{i.model}}</p>
-              <p class="card-text">Materiaal: {{i.materiaal}}</p>
-              <p class="card-text">Prijs: {{i.prijs}}</p>
-              <p class="card-text">Merk: {{i.merk}}</p>
-              <a class="btn btn-secondary p-1" href=" {% url 'fitit:koop' pk=i.id %}">koop</a>
-              {% if user.is_superuser %}
-              <a class="btn btn-secondary p-1" href=" {% url 'fitit:delete' pk=i.id%}">delete</a>
-              <a class="btn btn-secondary p-1" href=" {% url 'fitit:update' pk=i.id %}">update</a>
-              {% endif %}
-            </div>
-          </div>
-        {% endfor %}
+  <div class="container">
+    <br />
+    <br /><br />
+    <div class="row">
+      <div class="col text-center mb-5">
+        <h1 class="display-4">Ons horloge assortiment</h1>
+      </div>
     </div>
-</div>
+    <br />
+    <br />
+    <div class="row">
+      {% for i in list %}
+
+      <div class="card col-md-5 m-2">
+        <img
+          src="{{i.horloge_pic.url}}"
+          class="card-img-top"
+          style="height: auto; width: 20vw"
+          alt="..."
+        />
+        <div class="card-body">
+          <p class="card-text">Model: {{i.model}}</p>
+          <p class="card-text">Materiaal: {{i.materiaal}}</p>
+          <p class="card-text">Prijs: {{i.prijs}}</p>
+          <p class="card-text">Merk: {{i.merk}}</p>
+          <a
+            class="btn btn-secondary p-1"
+            href=" {% url 'fitit:koop' pk=i.id %}"
+            >koop</a
+          >
+          {% if user.is_superuser %}
+          <a
+            class="btn btn-secondary p-1"
+            href=" {% url 'fitit:delete' pk=i.id%}"
+            >delete</a
+          >
+          <a
+            class="btn btn-secondary p-1"
+            href=" {% url 'fitit:update' pk=i.id %}"
+            >update</a
+          >
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
 </section>
 {% endblock %}
